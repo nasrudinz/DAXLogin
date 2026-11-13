@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DAXLogin</AssemblyName>
+    <RootNamespace>DAXLogin</RootNamespace>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <StartupObject>DAXLogin.Program</StartupObject>
+    <Version>1.0.0</Version>
+    <Product>DAXLogin</Product>
+    <Description>One-click sign-in launcher for Microsoft Dynamics AX 2012</Description>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Velopack" Version="1.2.161" />
+    <Reference Include="System.Security" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+</Project>

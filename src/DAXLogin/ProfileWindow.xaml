@@ -1,0 +1,64 @@
+﻿<Window x:Class="DAXLogin.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:s="clr-namespace:DAXLogin"
+        Width="400" SizeToContent="Height" ResizeMode="NoResize" ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner" Style="{StaticResource Win}">
+    <StackPanel Margin="16,6,16,16">
+        <TextBlock Text="{s:L DisplayName}" Style="{StaticResource FieldLabel}"/>
+        <TextBox x:Name="NameBox"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="{s:L Domain}" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="DomainBox"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="{s:L User}" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="UserBox"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Text="{s:L Password}" Style="{StaticResource FieldLabel}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <PasswordBox x:Name="PwBox"/>
+            <TextBox x:Name="PwText" Visibility="Collapsed"/>
+            <Button Grid.Column="1" Style="{StaticResource BtnIcon}" Content="&#xE7B3;" Margin="8,0,0,0"
+                    Click="Eye_Click" ToolTip="{s:L ShowPassword}" AutomationProperties.Name="{s:L ShowPassword}"/>
+        </Grid>
+
+        <TextBlock Text="{s:L AxcFile}" Style="{StaticResource FieldLabel}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="AxcBox"/>
+            <Button Grid.Column="1" Style="{StaticResource BtnIcon}" Content="&#xE838;" Margin="8,0,0,0"
+                    Click="Browse_Click" ToolTip="{s:L Browse}" AutomationProperties.Name="{s:L Browse}"/>
+        </Grid>
+
+        <CheckBox x:Name="DefaultBox" Content="{s:L MakeDefault}" Margin="0,12,0,0"/>
+
+        <TextBlock x:Name="Msg" Style="{StaticResource ErrorText}" Visibility="Collapsed"/>
+
+        <Grid Margin="0,16,0,0">
+            <Button x:Name="TestBtn" Style="{StaticResource Btn}" Content="{s:L TestLogin}" HorizontalAlignment="Left"
+                    Click="Test_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource Btn}" Content="{s:L Cancel}" IsCancel="True"/>
+                <Button Style="{StaticResource BtnPrimary}" Content="{s:L Save}" IsDefault="True" Margin="8,0,0,0"
+                        Click="Save_Click"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Window>
