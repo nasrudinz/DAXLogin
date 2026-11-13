@@ -12,7 +12,10 @@ namespace DAXLogin
         public static void Main(string[] args)
         {
             // Must run first: handles installer/updater hooks and exits when invoked by them.
-            VelopackApp.Build().Run();
+            VelopackApp.Build()
+                // Uninstall leaves no "start with Windows" entry pointing at a removed exe.
+                .OnBeforeUninstallFastCallback(v => Store.ApplyStartWithWindows(false))
+                .Run();
 
             using var mutex = new Mutex(true, "DAXLogin.SingleInstance", out bool isFirst);
             if (!isFirst)

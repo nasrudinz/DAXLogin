@@ -13,6 +13,10 @@ One-click launcher that starts the Dynamics AX 2012 client (`Ax32.exe`) as a sav
 - ภาษาไทยและอังกฤษ
 - อัปเดตตัวเองจาก GitHub Releases
 
+## ติดตั้ง
+
+ดาวน์โหลด `DAXLogin-Setup.exe` จากหน้า [Releases](https://github.com/nasrudinz/DAXLogin/releases/latest) แล้วรัน ติดตั้งเฉพาะผู้ใช้ปัจจุบัน ไม่ต้องใช้สิทธิ์ admin ไฟล์ยังไม่ได้เซ็นรับรอง Windows SmartScreen จึงเตือนครั้งแรก ให้กด "More info" แล้ว "Run anyway"
+
 ## การเก็บรหัสผ่าน
 
 - รหัสผ่านเข้ารหัสด้วย Windows DPAPI ผูกกับบัญชี Windows ของผู้ใช้ เก็บที่ `%AppData%\DAXLogin\profiles.json`
@@ -36,10 +40,10 @@ dotnet tool install -g vpk --version 1.2.161
 .\build\pack.ps1 -Version 1.1.0 -Notes "สิ่งที่เปลี่ยน"
 ```
 
-ได้ไฟล์ใน `Releases\` จากนั้นอัปโหลดขึ้น GitHub Releases:
+สคริปต์รัน test, สร้างแพ็กเกจอัปเดตด้วย Velopack แล้วห่อ `DAXLogin-win-Setup.exe` ของ Velopack ไว้ในตัวติดตั้งที่มีหน้าตา (`src\DAXLogin.Setup`) ได้ไฟล์ใน `Releases\` จากนั้นอัปโหลดขึ้น GitHub Releases:
 
 ```
-vpk upload github --repoUrl https://github.com/nasrudinz/DAXLogin --publish --releaseName "DAXLogin 1.1.0" --tag v1.1.0 --token <token> --outputDir Releases
+gh release create v1.1.0 Releases\DAXLogin-Setup.exe Releases\DAXLogin-1.1.0-full.nupkg Releases\DAXLogin-1.1.0-delta.nupkg Releases\releases.win.json Releases\assets.win.json Releases\RELEASES --title "DAXLogin 1.1.0" --notes "สิ่งที่เปลี่ยน"
 ```
 
 แอปที่ติดตั้งแล้วจะพบเวอร์ชันใหม่เองเมื่อเปิดครั้งถัดไป repository ต้องเป็น public เพราะแอปไม่ฝัง token

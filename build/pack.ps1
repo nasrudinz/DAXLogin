@@ -1,4 +1,4 @@
-# Builds the installer and update packages into .\Releases
+# Builds the installer (DAXLogin-Setup.exe) and update packages into .\Releases
 #   .\build\pack.ps1 -Version 1.0.0
 # Requires: .NET SDK and the vpk tool (dotnet tool install -g vpk --version 1.2.161)
 param(
@@ -39,4 +39,11 @@ if ($Notes) {
 vpk @vpkArgs
 if ($LASTEXITCODE -ne 0) { throw 'vpk pack failed.' }
 
-Write-Host "Done. Installer: $releases\DAXLogin-win-Setup.exe"
+# Styled installer: wraps the Velopack Setup.exe that vpk just produced.
+$payload = Join-Path $releases 'DAXLogin-win-Setup.exe'
+$setupOut = Join-Path $root 'src\DAXLogin.Setup\bin\Release\net48\DAXLogin-Setup.exe'
+dotnet build (Join-Path $root 'src\DAXLogin.Setup') -c Release -p:Version=$Version "-p:PayloadPath=$payload" -nologo -v q
+if ($LASTEXITCODE -ne 0) { throw 'Installer build failed.' }
+Copy-Item $setupOut (Join-Path $releases 'DAXLogin-Setup.exe') -Force
+
+Write-Host "Done. Installer: $releases\DAXLogin-Setup.exe"

@@ -11,7 +11,7 @@
     <RootNamespace>DAXLogin</RootNamespace>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
     <StartupObject>DAXLogin.Program</StartupObject>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Product>DAXLogin</Product>
     <Description>One-click sign-in launcher for Microsoft Dynamics AX 2012</Description>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
